@@ -1,0 +1,11 @@
+{
+  "name": "IL.Fix",
+  "displayName":"IL.Fix",
+  "version": "0.0.1",
+  "unity": "2020.3",
+  "keywords": ["IL", "Fix"],
+  "category": "Framework",
+  "description": "IL fix & patch solution",
+  "dependencies": {
+  }
+}
