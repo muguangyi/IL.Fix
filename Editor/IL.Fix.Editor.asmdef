@@ -1,0 +1,18 @@
+{
+    "name": "IL.Fix.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:57daf5fce3414ff4392425325ca8d949"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
