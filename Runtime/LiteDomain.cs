@@ -13,9 +13,22 @@ namespace IL.Lite
 {
     public sealed class LiteDomain
     {
+        private static LiteDomain current = null;
+
+        static LiteDomain()
+        {
+            current = new LiteDomain();
+        }
+
+        public static LiteDomain Current => current;
+
         private LiteType[] liteTypes = null;
 
         private LiteDomain()
         { }
+
+        public void Load(byte[] rawData)
+        {
+        }
     }
 }
