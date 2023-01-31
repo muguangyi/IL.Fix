@@ -1,9 +1,9 @@
 {
-  "name":"com.moo.il.fix",
-  "displayName":"IL.Fix",
+  "name":"com.moo.il.lite",
+  "displayName":"IL.Lite",
   "version": "0.0.1",
   "unity": "2020.3",
-  "keywords": ["IL", "Fix"],
+  "keywords": ["IL", "Lite"],
   "category": "Framework",
   "description": "IL fix & patch solution",
   "dependencies": {

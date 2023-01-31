@@ -1,5 +1,5 @@
 {
-    "name": "IL.Fix.Editor",
+    "name": "IL.Lite.Editor",
     "rootNamespace": "",
     "references": [
         "GUID:57daf5fce3414ff4392425325ca8d949"

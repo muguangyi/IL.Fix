@@ -1,5 +1,5 @@
 /*
- * This file is part of IL.Fix project.
+ * This file is part of IL.Lite project.
  *
  * (c) MuGuangyi <muguangyi@hotmail.com>
  *
@@ -7,9 +7,12 @@
  * file that was distributed with this source code.
  */
 
-namespace IL.Fix
+using UnityEditor;
+
+namespace IL.Lite.Editor
 {
-    public sealed class VM
+    public sealed class ILLiteEditor : EditorWindow
     {
+
     }
 }
