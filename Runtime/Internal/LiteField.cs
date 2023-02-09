@@ -13,7 +13,7 @@ using System.Reflection;
 
 namespace IL.Lite.Internal
 {
-    internal abstract class LiteField : FieldInfo, ILiteInfo
+    internal abstract class LiteField : FieldInfo
     {
         public override FieldAttributes Attributes => throw new NotImplementedException();
 
@@ -51,8 +51,5 @@ namespace IL.Lite.Internal
         {
             throw new NotImplementedException();
         }
-
-        public abstract ArraySegment<byte> Serialize(SerializeMode mode); 
-        public abstract void Deserialize(ArraySegment<byte> data, SerializeMode mode);
     }
 }

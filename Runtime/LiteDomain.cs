@@ -8,6 +8,7 @@
  */
 
 using IL.Lite.Internal;
+using System;
 
 namespace IL.Lite
 {
@@ -22,13 +23,36 @@ namespace IL.Lite
 
         public static LiteDomain Current => current;
 
-        private LiteType[] liteTypes = null;
+        private readonly LiteTypeSystem typeSystem = null;
+        private readonly LiteInterpreter interp = null;
 
         private LiteDomain()
-        { }
+        {
+            this.typeSystem = new LiteTypeSystem(this);
+            this.interp = new LiteInterpreter(this);
+        }
 
         public void Load(byte[] rawData)
         {
+            this.typeSystem.Load(rawData);
         }
+
+        public Type GetType(string type)
+        {
+            return this.typeSystem.GetType(type);
+        }
+
+        public Type GetType(object obj)
+        {
+            return this.typeSystem.GetType(obj);
+        }
+
+        public Type[] GetTypes()
+        {
+            return this.typeSystem.GetTypes();
+        }
+
+        internal LiteTypeSystem TypeSystem => this.typeSystem;
+        internal LiteInterpreter Interp => this.interp;
     }
 }

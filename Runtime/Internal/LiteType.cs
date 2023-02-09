@@ -13,7 +13,7 @@ using System.Reflection;
 
 namespace IL.Lite.Internal
 {
-    internal abstract class LiteType : Type, ILiteInfo
+    internal abstract class LiteType : Type
     {
         public override Assembly Assembly => throw new NotImplementedException();
 
@@ -167,8 +167,5 @@ namespace IL.Lite.Internal
         {
             throw new NotImplementedException();
         }
-
-        public abstract ArraySegment<byte> Serialize(SerializeMode mode);
-        public abstract void Deserialize(ArraySegment<byte> data, SerializeMode mode);
     }
 }

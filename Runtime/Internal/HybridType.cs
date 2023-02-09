@@ -21,15 +21,5 @@ namespace IL.Lite.Internal
         {
             this.type = type ?? throw new ArgumentNullException("type");
         }
-
-        public override ArraySegment<byte> Serialize(SerializeMode mode)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Deserialize(ArraySegment<byte> data, SerializeMode mode)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

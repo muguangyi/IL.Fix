@@ -14,15 +14,5 @@ namespace IL.Lite.Internal
     internal class VirtualMethod : LiteMethod
     {
         private VirtualInstruction[] virtualInstructions = null;
-
-        public override ArraySegment<byte> Serialize(SerializeMode mode)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Deserialize(ArraySegment<byte> data, SerializeMode mode)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

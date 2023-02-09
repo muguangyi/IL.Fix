@@ -11,7 +11,7 @@ using System;
 
 namespace IL.Lite.Internal
 {
-    internal interface ILiteInfo
+    internal interface IDescriptor
     {
         ArraySegment<byte> Serialize(SerializeMode mode);
         void Deserialize(ArraySegment<byte> data, SerializeMode mode);
