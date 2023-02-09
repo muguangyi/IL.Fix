@@ -62,7 +62,7 @@ namespace IL.Lite.Internal
             throw new NotImplementedException();
         }
 
-        public abstract ArraySegment<byte> Serialize();
-        public abstract void Deserialize(ArraySegment<byte> data);
+        public abstract ArraySegment<byte> Serialize(SerializeMode mode);
+        public abstract void Deserialize(ArraySegment<byte> data, SerializeMode mode);
     }
 }

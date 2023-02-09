@@ -1,4 +1,4 @@
-﻿/*
+/*
  * This file is part of IL.Lite project.
  *
  * (c) MuGuangyi <muguangyi@hotmail.com>
@@ -7,13 +7,9 @@
  * file that was distributed with this source code.
  */
 
-using System;
-
 namespace IL.Lite.Internal
 {
-    internal interface ILiteInfo
+    internal sealed class LiteInterpreter
     {
-        ArraySegment<byte> Serialize(SerializeMode mode);
-        void Deserialize(ArraySegment<byte> data, SerializeMode mode);
     }
 }

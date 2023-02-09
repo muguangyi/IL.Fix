@@ -14,5 +14,6 @@ namespace IL.Lite.Internal
     [StructLayout(LayoutKind.Sequential)]
     internal class VirtualInstruction
     {
+        public long Operand;
     }
 }

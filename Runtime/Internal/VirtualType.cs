@@ -16,12 +16,12 @@ namespace IL.Lite.Internal
         private VirtualField[] virtualFields = null;
         private VirtualMethod[] virtualMethods = null;
 
-        public override ArraySegment<byte> Serialize()
+        public override ArraySegment<byte> Serialize(SerializeMode mode)
         {
             throw new NotImplementedException();
         }
 
-        public override void Deserialize(ArraySegment<byte> data)
+        public override void Deserialize(ArraySegment<byte> data, SerializeMode mode)
         {
             throw new NotImplementedException();
         }

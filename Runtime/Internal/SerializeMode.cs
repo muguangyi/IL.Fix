@@ -1,4 +1,4 @@
-/*
+﻿/*
  * This file is part of IL.Lite project.
  *
  * (c) MuGuangyi <muguangyi@hotmail.com>
@@ -9,7 +9,9 @@
 
 namespace IL.Lite.Internal
 {
-    internal sealed class LiteVM
+    internal enum SerializeMode
     {
+        Text,
+        Binary,
     }
 }
