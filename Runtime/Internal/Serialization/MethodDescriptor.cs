@@ -7,13 +7,17 @@
  * file that was distributed with this source code.
  */
 
+using Mono.Cecil;
 using System;
 
 namespace IL.Lite.Internal
 {
-    internal class FieldDescriptor : IDescriptor
+    internal class MethodDescriptor : IDescriptor
     {
-        public LiteField ToLiteField()
+        private MethodDescriptor()
+        { }
+
+        public LiteMethod ToLiteMethod()
         {
             return null;
         }
@@ -26,6 +30,13 @@ namespace IL.Lite.Internal
         public void Deserialize(ArraySegment<byte> data, SerializeMode mode)
         {
             throw new NotImplementedException();
+        }
+
+        public static MethodDescriptor FromMethodDefinition(MethodDefinition method)
+        {
+            var desp = new MethodDescriptor();
+
+            return desp;
         }
     }
 }
