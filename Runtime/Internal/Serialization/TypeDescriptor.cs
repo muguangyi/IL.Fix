@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 namespace IL.Lite.Internal
 {
-    internal class TypeDescriptor : IDescriptor
+    internal class TypeDescriptor : MetaDescriptor
     {
         private readonly List<FieldDescriptor> fields = new List<FieldDescriptor>();
         private readonly List<MethodDescriptor> methods = new List<MethodDescriptor>();
@@ -23,15 +23,26 @@ namespace IL.Lite.Internal
 
         public LiteType ToLiteType()
         {
-            return null;
+            if (this.state == MetaState.New)
+            {
+                return new VirtualType();
+            }
+            else if (this.state == MetaState.Different)
+            {
+                return new HybridType(null);
+            }
+            else
+            {
+                return new NativeType(null);
+            }
         }
 
-        public ArraySegment<byte> Serialize(SerializeMode mode)
+        public override ArraySegment<byte> Serialize(SerializeMode mode)
         {
             throw new NotImplementedException();
         }
 
-        public void Deserialize(ArraySegment<byte> data, SerializeMode mode)
+        public override void Deserialize(ArraySegment<byte> data, SerializeMode mode)
         {
             throw new NotImplementedException();
         }

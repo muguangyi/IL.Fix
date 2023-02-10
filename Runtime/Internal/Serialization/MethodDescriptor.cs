@@ -12,22 +12,29 @@ using System;
 
 namespace IL.Lite.Internal
 {
-    internal class MethodDescriptor : IDescriptor
+    internal class MethodDescriptor : MetaDescriptor
     {
         private MethodDescriptor()
         { }
 
         public LiteMethod ToLiteMethod()
         {
-            return null;
+            if (this.state == MetaState.New)
+            {
+                return new VirtualMethod();
+            }
+            else
+            {
+                return new NativeMethod();
+            }
         }
 
-        public ArraySegment<byte> Serialize(SerializeMode mode)
+        public override ArraySegment<byte> Serialize(SerializeMode mode)
         {
             throw new NotImplementedException();
         }
 
-        public void Deserialize(ArraySegment<byte> data, SerializeMode mode)
+        public override void Deserialize(ArraySegment<byte> data, SerializeMode mode)
         {
             throw new NotImplementedException();
         }

@@ -11,9 +11,7 @@ using System;
 
 namespace IL.Lite.Internal
 {
-    internal interface IDescriptor
+    internal class NativeMethod : LiteMethod
     {
-        ArraySegment<byte> Serialize(SerializeMode mode);
-        void Deserialize(ArraySegment<byte> data, SerializeMode mode);
     }
 }

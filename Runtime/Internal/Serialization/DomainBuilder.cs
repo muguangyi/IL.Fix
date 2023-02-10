@@ -38,6 +38,7 @@ namespace IL.Lite.Internal
             using var stream = new MemoryStream();
             foreach (var t in this.types)
             {
+                // TODO: Setup type block.
                 var bytes = t.Serialize(mode);
                 stream.Write(bytes);
             }
