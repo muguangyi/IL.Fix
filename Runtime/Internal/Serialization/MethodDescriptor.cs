@@ -14,6 +14,8 @@ namespace IL.Lite.Internal
 {
     internal class MethodDescriptor : MetaDescriptor
     {
+        internal MethodDefinition definition = null;
+
         private MethodDescriptor()
         { }
 
@@ -29,6 +31,12 @@ namespace IL.Lite.Internal
             }
         }
 
+        public MethodDescriptor Diff(MethodDescriptor target)
+        {
+            var diff = new MethodDescriptor();
+            return diff;
+        }
+
         public override ArraySegment<byte> Serialize(SerializeMode mode)
         {
             throw new NotImplementedException();
@@ -39,9 +47,11 @@ namespace IL.Lite.Internal
             throw new NotImplementedException();
         }
 
-        public static MethodDescriptor FromMethodDefinition(MethodDefinition method)
+        public static MethodDescriptor FromMethodDefinition(MethodDefinition definition)
         {
             var desp = new MethodDescriptor();
+            desp.token = definition.FullName;
+            desp.definition = definition;
 
             return desp;
         }

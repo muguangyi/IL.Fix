@@ -14,6 +14,8 @@ namespace IL.Lite.Internal
 {
     internal class FieldDescriptor : MetaDescriptor
     {
+        internal FieldDefinition definition = null;
+
         private FieldDescriptor()
         { }
 
@@ -29,6 +31,12 @@ namespace IL.Lite.Internal
             }
         }
 
+        public FieldDescriptor Diff(FieldDescriptor target)
+        {
+            var diff = new FieldDescriptor();
+            return diff;
+        }
+
         public override ArraySegment<byte> Serialize(SerializeMode mode)
         {
             throw new NotImplementedException();
@@ -39,9 +47,11 @@ namespace IL.Lite.Internal
             throw new NotImplementedException();
         }
 
-        public static FieldDescriptor FromFieldDefinition(FieldDefinition field)
+        public static FieldDescriptor FromFieldDefinition(FieldDefinition definition)
         {
             var desp = new FieldDescriptor();
+            desp.token = definition.FullName;
+            desp.definition = definition;
 
             return desp;
         }

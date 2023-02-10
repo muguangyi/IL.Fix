@@ -37,6 +37,43 @@ namespace IL.Lite.Internal
             }
         }
 
+        public TypeDescriptor Diff(TypeDescriptor target)
+        {
+            var diff = new TypeDescriptor();
+
+            foreach (var f in this.fields)
+            {
+                FieldDescriptor desp;
+                if (target.TryGetField(f.token, out var field))
+                {
+                    desp = f.Diff(field);
+                }
+                else
+                {
+                    desp = FieldDescriptor.FromFieldDefinition(f.definition);
+                    desp.state = MetaState.New;
+                }
+                diff.fields.Add(desp);
+            }
+
+            foreach (var m in this.methods)
+            {
+                MethodDescriptor desp;
+                if (target.TryGetMethod(m.token, out var method))
+                {
+                    desp = m.Diff(method);
+                }
+                else
+                {
+                    desp = MethodDescriptor.FromMethodDefinition(m.definition);
+                    desp.state = MetaState.New;
+                }
+                diff.methods.Add(desp);
+            }
+
+            return diff;
+        }
+
         public override ArraySegment<byte> Serialize(SerializeMode mode)
         {
             throw new NotImplementedException();
@@ -45,6 +82,36 @@ namespace IL.Lite.Internal
         public override void Deserialize(ArraySegment<byte> data, SerializeMode mode)
         {
             throw new NotImplementedException();
+        }
+
+        private bool TryGetField(string token, out FieldDescriptor field)
+        {
+            foreach (var f in this.fields)
+            {
+                if (f.token == token)
+                {
+                    field = f;
+                    return true;
+                }
+            }
+
+            field = null;
+            return false;
+        }
+
+        private bool TryGetMethod(string token, out MethodDescriptor method)
+        {
+            foreach (var m in this.methods)
+            {
+                if (m.token == token)
+                {
+                    method = m;
+                    return true;
+                }
+            }
+
+            method = null;
+            return false;
         }
 
         public static TypeDescriptor FromTypeDefinition(TypeDefinition type)
