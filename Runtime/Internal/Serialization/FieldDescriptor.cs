@@ -34,6 +34,8 @@ namespace IL.Lite.Internal
         public FieldDescriptor Diff(FieldDescriptor target)
         {
             var diff = new FieldDescriptor();
+            diff.token = this.token;
+
             return diff;
         }
 

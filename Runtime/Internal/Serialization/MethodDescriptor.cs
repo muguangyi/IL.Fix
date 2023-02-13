@@ -34,6 +34,8 @@ namespace IL.Lite.Internal
         public MethodDescriptor Diff(MethodDescriptor target)
         {
             var diff = new MethodDescriptor();
+            diff.token = this.token;
+
             return diff;
         }
 

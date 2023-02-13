@@ -15,6 +15,7 @@ namespace IL.Lite.Internal
 {
     internal class TypeDescriptor : MetaDescriptor
     {
+        internal TypeDefinition definition = null;
         private readonly List<FieldDescriptor> fields = new List<FieldDescriptor>();
         private readonly List<MethodDescriptor> methods = new List<MethodDescriptor>();
 
@@ -40,6 +41,7 @@ namespace IL.Lite.Internal
         public TypeDescriptor Diff(TypeDescriptor target)
         {
             var diff = new TypeDescriptor();
+            diff.token = this.token;
 
             foreach (var f in this.fields)
             {
@@ -114,14 +116,17 @@ namespace IL.Lite.Internal
             return false;
         }
 
-        public static TypeDescriptor FromTypeDefinition(TypeDefinition type)
+        public static TypeDescriptor FromTypeDefinition(TypeDefinition definition)
         {
             var desp = new TypeDescriptor();
-            foreach (var f in type.Fields)
+            desp.token = definition.FullName;
+            desp.definition = definition;
+
+            foreach (var f in definition.Fields)
             {
                 desp.fields.Add(FieldDescriptor.FromFieldDefinition(f));
             }
-            foreach (var m in type.Methods)
+            foreach (var m in definition.Methods)
             {
                 desp.methods.Add(MethodDescriptor.FromMethodDefinition(m));
             }
