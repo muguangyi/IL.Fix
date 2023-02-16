@@ -13,12 +13,12 @@ namespace IL.Lite.Internal
 {
     internal class LiteTypeSystem
     {
-        private readonly LiteDomain domain = null;
-        private LiteType[] liteTypes = null;
+        private readonly LiteDomain _domain = null;
+        private LiteType[] _liteTypes = null;
 
         public LiteTypeSystem(LiteDomain domain)
         {
-            this.domain = domain;
+            _domain = domain;
         }
 
         public void Load(byte[] rawData)

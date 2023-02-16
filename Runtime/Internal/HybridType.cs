@@ -13,13 +13,13 @@ namespace IL.Lite.Internal
 {
     internal class HybridType : LiteType
     {
-        private readonly Type type = null;
-        private VirtualField[] virtualFields = null;
-        private VirtualMethod[] virtualMethods = null;
+        private readonly Type _type = null;
+        private VirtualField[] _virtualFields = null;
+        private VirtualMethod[] _virtualMethods = null;
 
         public HybridType(Type type)
         {
-            this.type = type ?? throw new ArgumentNullException("type");
+            _type = type ?? throw new ArgumentNullException("type");
         }
     }
 }

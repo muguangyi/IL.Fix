@@ -14,14 +14,14 @@ namespace IL.Lite.Internal
 {
     internal class MethodDescriptor : MetaDescriptor
     {
-        internal MethodDefinition definition = null;
+        internal MethodDefinition _definition = null;
 
         private MethodDescriptor()
         { }
 
         public LiteMethod ToLiteMethod()
         {
-            if (this.state == MetaState.New)
+            if (_state == MetaState.New)
             {
                 return new VirtualMethod();
             }
@@ -34,7 +34,7 @@ namespace IL.Lite.Internal
         public MethodDescriptor Diff(MethodDescriptor target)
         {
             var diff = new MethodDescriptor();
-            diff.token = this.token;
+            diff._token = _token;
 
             return diff;
         }
@@ -52,8 +52,8 @@ namespace IL.Lite.Internal
         public static MethodDescriptor FromMethodDefinition(MethodDefinition definition)
         {
             var desp = new MethodDescriptor();
-            desp.token = definition.FullName;
-            desp.definition = definition;
+            desp._token = definition.FullName;
+            desp._definition = definition;
 
             return desp;
         }

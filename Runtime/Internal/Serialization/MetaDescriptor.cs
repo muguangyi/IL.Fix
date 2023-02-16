@@ -13,8 +13,8 @@ namespace IL.Lite.Internal
 {
     internal abstract class MetaDescriptor : IMetaDescriptor
     {
-        internal string token = null;
-        internal MetaState state = MetaState.Same;
+        internal string _token = null;
+        internal MetaState _state = MetaState.Same;
 
         public abstract ArraySegment<byte> Serialize(SerializeMode mode);
         public abstract void Deserialize(ArraySegment<byte> data, SerializeMode mode);

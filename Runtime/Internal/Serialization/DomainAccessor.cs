@@ -14,28 +14,28 @@ namespace IL.Lite.Internal
 {
     internal class DomainAccessor
     {
-        private readonly bool writable = false;
-        protected readonly List<AssemblyDefinition> assemblies = new List<AssemblyDefinition>();
-        protected readonly List<TypeDescriptor> types = new List<TypeDescriptor>();
+        private readonly bool _writable = false;
+        protected readonly List<AssemblyDefinition> _assemblies = new List<AssemblyDefinition>();
+        protected readonly List<TypeDescriptor> _types = new List<TypeDescriptor>();
 
         public DomainAccessor(bool writable = false)
         {
-            this.writable = writable;
+            _writable = writable;
         }
 
         public void LoadAssembly(string assembly, params string[] searchingPaths)
         {
-            var a = AssemblyDefinition.ReadAssembly(assembly, new ReaderParameters { ReadWrite = this.writable });
+            var a = AssemblyDefinition.ReadAssembly(assembly, new ReaderParameters { ReadWrite = this._writable });
             var resolver = a.MainModule.AssemblyResolver as BaseAssemblyResolver;
             foreach (var p in searchingPaths)
             {
                 resolver.AddSearchDirectory(p);
             }
-            this.assemblies.Add(a);
+            _assemblies.Add(a);
 
             foreach (var t in a.MainModule.Types)
             {
-                this.types.Add(TypeDescriptor.FromTypeDefinition(t));
+                _types.Add(TypeDescriptor.FromTypeDefinition(t));
             }
         }
     }

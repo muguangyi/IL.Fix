@@ -1,4 +1,13 @@
-﻿using System.Reflection;
+﻿/*
+ * This file is part of IL.Lite project.
+ *
+ * (c) MuGuangyi <muguangyi@hotmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 // 有关程序集的一般信息由以下

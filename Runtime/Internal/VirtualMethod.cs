@@ -13,6 +13,6 @@ namespace IL.Lite.Internal
 {
     internal class VirtualMethod : LiteMethod
     {
-        private VirtualInstruction[] virtualInstructions = null;
+        private VirtualInstruction[] _virtualInstructions = null;
     }
 }

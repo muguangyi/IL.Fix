@@ -15,20 +15,20 @@ namespace IL.Lite.Internal
 {
     internal class TypeDescriptor : MetaDescriptor
     {
-        internal TypeDefinition definition = null;
-        private readonly List<FieldDescriptor> fields = new List<FieldDescriptor>();
-        private readonly List<MethodDescriptor> methods = new List<MethodDescriptor>();
+        internal TypeDefinition _definition = null;
+        private readonly List<FieldDescriptor> _fields = new List<FieldDescriptor>();
+        private readonly List<MethodDescriptor> _methods = new List<MethodDescriptor>();
 
         private TypeDescriptor()
         { }
 
         public LiteType ToLiteType()
         {
-            if (this.state == MetaState.New)
+            if (_state == MetaState.New)
             {
                 return new VirtualType();
             }
-            else if (this.state == MetaState.Different)
+            else if (_state == MetaState.Different)
             {
                 return new HybridType(null);
             }
@@ -41,36 +41,36 @@ namespace IL.Lite.Internal
         public TypeDescriptor Diff(TypeDescriptor target)
         {
             var diff = new TypeDescriptor();
-            diff.token = this.token;
+            diff._token = _token;
 
-            foreach (var f in this.fields)
+            foreach (var f in _fields)
             {
                 FieldDescriptor desp;
-                if (target.TryGetField(f.token, out var field))
+                if (target.TryGetField(f._token, out var field))
                 {
                     desp = f.Diff(field);
                 }
                 else
                 {
-                    desp = FieldDescriptor.FromFieldDefinition(f.definition);
-                    desp.state = MetaState.New;
+                    desp = FieldDescriptor.FromFieldDefinition(f._definition);
+                    desp._state = MetaState.New;
                 }
-                diff.fields.Add(desp);
+                diff._fields.Add(desp);
             }
 
-            foreach (var m in this.methods)
+            foreach (var m in _methods)
             {
                 MethodDescriptor desp;
-                if (target.TryGetMethod(m.token, out var method))
+                if (target.TryGetMethod(m._token, out var method))
                 {
                     desp = m.Diff(method);
                 }
                 else
                 {
-                    desp = MethodDescriptor.FromMethodDefinition(m.definition);
-                    desp.state = MetaState.New;
+                    desp = MethodDescriptor.FromMethodDefinition(m._definition);
+                    desp._state = MetaState.New;
                 }
-                diff.methods.Add(desp);
+                diff._methods.Add(desp);
             }
 
             return diff;
@@ -88,9 +88,9 @@ namespace IL.Lite.Internal
 
         private bool TryGetField(string token, out FieldDescriptor field)
         {
-            foreach (var f in this.fields)
+            foreach (var f in _fields)
             {
-                if (f.token == token)
+                if (f._token == token)
                 {
                     field = f;
                     return true;
@@ -103,9 +103,9 @@ namespace IL.Lite.Internal
 
         private bool TryGetMethod(string token, out MethodDescriptor method)
         {
-            foreach (var m in this.methods)
+            foreach (var m in _methods)
             {
-                if (m.token == token)
+                if (m._token == token)
                 {
                     method = m;
                     return true;
@@ -119,16 +119,16 @@ namespace IL.Lite.Internal
         public static TypeDescriptor FromTypeDefinition(TypeDefinition definition)
         {
             var desp = new TypeDescriptor();
-            desp.token = definition.FullName;
-            desp.definition = definition;
+            desp._token = definition.FullName;
+            desp._definition = definition;
 
             foreach (var f in definition.Fields)
             {
-                desp.fields.Add(FieldDescriptor.FromFieldDefinition(f));
+                desp._fields.Add(FieldDescriptor.FromFieldDefinition(f));
             }
             foreach (var m in definition.Methods)
             {
-                desp.methods.Add(MethodDescriptor.FromMethodDefinition(m));
+                desp._methods.Add(MethodDescriptor.FromMethodDefinition(m));
             }
 
             return desp;

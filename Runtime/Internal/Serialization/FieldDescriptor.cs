@@ -14,14 +14,14 @@ namespace IL.Lite.Internal
 {
     internal class FieldDescriptor : MetaDescriptor
     {
-        internal FieldDefinition definition = null;
+        internal FieldDefinition _definition = null;
 
         private FieldDescriptor()
         { }
 
         public LiteField ToLiteField()
         {
-            if (this.state == MetaState.New)
+            if (_state == MetaState.New)
             {
                 return new VirtualField();
             }
@@ -34,7 +34,7 @@ namespace IL.Lite.Internal
         public FieldDescriptor Diff(FieldDescriptor target)
         {
             var diff = new FieldDescriptor();
-            diff.token = this.token;
+            diff._token = _token;
 
             return diff;
         }
@@ -52,8 +52,8 @@ namespace IL.Lite.Internal
         public static FieldDescriptor FromFieldDefinition(FieldDefinition definition)
         {
             var desp = new FieldDescriptor();
-            desp.token = definition.FullName;
-            desp.definition = definition;
+            desp._token = definition.FullName;
+            desp._definition = definition;
 
             return desp;
         }

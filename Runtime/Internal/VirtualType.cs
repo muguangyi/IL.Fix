@@ -13,7 +13,7 @@ namespace IL.Lite.Internal
 {
     internal class VirtualType : LiteType
     {
-        private VirtualField[] virtualFields = null;
-        private VirtualMethod[] virtualMethods = null;
+        private VirtualField[] _virtualFields = null;
+        private VirtualMethod[] _virtualMethods = null;
     }
 }

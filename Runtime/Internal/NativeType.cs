@@ -13,11 +13,11 @@ namespace IL.Lite.Internal
 {
     internal class NativeType : LiteType
     {
-        private readonly Type type = null;
+        private readonly Type _type = null;
 
         public NativeType(Type type)
         {
-            this.type = type ?? throw new ArgumentNullException("type");
+            _type = type ?? throw new ArgumentNullException("type");
         }
     }
 }

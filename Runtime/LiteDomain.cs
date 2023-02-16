@@ -14,45 +14,42 @@ namespace IL.Lite
 {
     public sealed class LiteDomain
     {
-        private static LiteDomain current = null;
+        private static LiteDomain _current = null;
 
         static LiteDomain()
         {
-            current = new LiteDomain();
+            _current = new LiteDomain();
         }
 
-        public static LiteDomain Current => current;
+        public static LiteDomain Current => _current;
 
-        private readonly LiteTypeSystem typeSystem = null;
-        private readonly LiteInterpreter interp = null;
+        internal readonly LiteTypeSystem _typeSystem = null;
+        internal readonly LiteInterpreter _interp = null;
 
         private LiteDomain()
         {
-            this.typeSystem = new LiteTypeSystem(this);
-            this.interp = new LiteInterpreter(this);
+            _typeSystem = new LiteTypeSystem(this);
+            _interp = new LiteInterpreter(this);
         }
 
         public void Load(byte[] rawData)
         {
-            this.typeSystem.Load(rawData);
+            _typeSystem.Load(rawData);
         }
 
         public Type GetType(string type)
         {
-            return this.typeSystem.GetType(type);
+            return _typeSystem.GetType(type);
         }
 
         public Type GetType(object obj)
         {
-            return this.typeSystem.GetType(obj);
+            return _typeSystem.GetType(obj);
         }
 
         public Type[] GetTypes()
         {
-            return this.typeSystem.GetTypes();
+            return _typeSystem.GetTypes();
         }
-
-        internal LiteTypeSystem TypeSystem => this.typeSystem;
-        internal LiteInterpreter Interp => this.interp;
     }
 }

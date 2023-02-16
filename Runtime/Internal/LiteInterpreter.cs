@@ -11,11 +11,11 @@ namespace IL.Lite.Internal
 {
     internal sealed class LiteInterpreter
     {
-        private readonly LiteDomain domain = null;
+        private readonly LiteDomain _domain = null;
 
         public LiteInterpreter(LiteDomain domain)
         {
-            this.domain = domain;
+            _domain = domain;
         }
 
         public object Execute()

@@ -22,7 +22,7 @@ namespace IL.Lite.Internal
             // 1. Inject code to types.
             // 2. Save all target assemblies. [DONE]
 
-            foreach (var a in this.assemblies)
+            foreach (var a in this._assemblies)
             {
                 a.Write();
             }
@@ -36,7 +36,7 @@ namespace IL.Lite.Internal
             // 3. Serialize patch info to patch asset.
 
             using var stream = new MemoryStream();
-            foreach (var t in this.types)
+            foreach (var t in this._types)
             {
                 // TODO: Setup type block.
                 var bytes = t.Serialize(mode);
